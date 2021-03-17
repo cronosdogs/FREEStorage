@@ -1,7 +1,7 @@
 secretGenerator:
 - name: mysql-pass
   literals:
-- password={change this to your password}
+  - password=CHangeMe!@!@
 resources:
   - mysql-deployment.yaml
   - wordpress-deployment.yaml
