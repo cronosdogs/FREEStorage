@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: metasploit
+spec:
+  selector:
+    matchLabels:
+      run: metasploit
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: metasploit
+    spec:
+      containers:
+      - name: metasploit
+        image: vulnerables/metasploit-vulnerability-emulator
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+      restartPolicy: Always
