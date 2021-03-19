@@ -17,5 +17,5 @@ spec:
         image: jasonrivers/nagios
         imagePullPolicy: IfNotPresent
         ports:
-        - containerPort: 80,8080
+        - containerPort: 80
       restartPolicy: Always
