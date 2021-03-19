@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nagios
+spec:
+  selector:
+    matchLabels:
+      run: nagios
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: nagios
+    spec:
+      containers:
+      - name: nagios
+        image: jasonrivers/nagios
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80,8080
+      restartPolicy: Always
