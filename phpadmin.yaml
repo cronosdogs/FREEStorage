@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: phpadmin
+spec:
+  selector:
+    matchLabels:
+      run: phpadmin
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: phpadmin
+    spec:
+      containers:
+      - name: phpadmin
+        image: vulnerables/phpldapadmin-remote-dump
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+      restartPolicy: Always
