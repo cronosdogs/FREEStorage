@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: nagios
-        image: jasonrivers/nagios
+        image: jasonrivers/nagios:4.2.0
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
