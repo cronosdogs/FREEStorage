@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: openmrs
+spec:
+  selector:
+    matchLabels:
+      run: openmrs
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: openmrs
+    spec:
+      containers:
+      - name: openmrs
+        image: openmrs/openmrs-reference-application-distro:2.1.2
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+      restartPolicy: Always
