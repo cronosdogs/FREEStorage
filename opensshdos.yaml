@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: openssh
+spec:
+  selector:
+    matchLabels:
+      run: openssh
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: openssh
+    spec:
+      containers:
+      - name: openssh
+        image: vulnerables/cve-2016-6515
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+        - containerPort: 22
+        - containerPort: 8022
+      restartPolicy: Always
