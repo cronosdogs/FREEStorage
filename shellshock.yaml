@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shellshock
+spec:
+  selector:
+    matchLabels:
+      run: shellshock
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: shellshock
+    spec:
+      containers:
+      - name: shellshock
+        image: vulnerables/cve-2014-6271
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+        - containerPort: 8080
+      restartPolicy: Always
