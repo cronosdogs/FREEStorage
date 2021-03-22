@@ -1,1 +1,22 @@
-vulnerables/cve-2016-10033
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: phpmailer
+spec:
+  selector:
+    matchLabels:
+      run: phpmailer
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: phpmailer
+    spec:
+      containers:
+      - name: phpmailer
+        image: vulnerables/cve-2016-10033
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+        - containerPort: 8080
+      restartPolicy: Always
