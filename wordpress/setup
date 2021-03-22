@@ -1,0 +1,5 @@
+To set up wordpress, you need to first go to the ip address, do the set up wizard and then go to the pod and run the script inside of the pod. 
+
+To run the script first do an "apt update" and make sure you are under the /var/www/html/ directory. Make a file in there and then give it permissions and run it. 
+
+After your installation is done, go to the ip address and import the xml file in this directory. 
