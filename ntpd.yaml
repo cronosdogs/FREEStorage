@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ntpd
+spec:
+  selector:
+    matchLabels:
+      run: ntpd
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: ntpd
+    spec:
+      containers:
+      - name: ntpd
+        image: vulnerables/cve-2016-7434
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 123
+      restartPolicy: Always
