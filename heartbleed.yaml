@@ -1,1 +1,23 @@
-vulnerables/cve-2014-0160
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: heartbleed
+spec:
+  selector:
+    matchLabels:
+      run: heartbleed
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: heartbleed
+    spec:
+      containers:
+      - name: heartbleed
+        image: vulnerables/cve-2014-0160
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+        - containerPort: 8080
+        - containerPort: 443
+      restartPolicy: Always
