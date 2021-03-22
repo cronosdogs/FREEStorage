@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: haraka
+spec:
+  selector:
+    matchLabels:
+      run: haraka
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: haraka
+    spec:
+      containers:
+      - name: haraka
+        image: vulnerables/mail-haraka-2.8.9-rce
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+        - containerPort: 25
+        - containerPort: 587
+      restartPolicy: Always
