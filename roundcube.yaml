@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: roundcube
+spec:
+  selector:
+    matchLabels:
+      run: roundcube
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: roundcube
+    spec:
+      containers:
+      - name: roundcube
+        image: vulnerables/web-roundcube-1.2.2-rce
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+        - containerPort: 8080
+        - containerPort: 25
+        - containerPort: 143
+        - containerPort: 587
+        - containerPort: 465
+      restartPolicy: Always
