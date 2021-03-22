@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: samba
+spec:
+  selector:
+    matchLabels:
+      run: samba
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: samba
+    spec:
+      containers:
+      - name: samba
+        image: vulnerables/cve-2017-7494
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+        - containerPort: 137
+        - containerPort: 138
+        - containerPort: 139
+        - containerPort: 445
+        - containerPort: 6699
+      restartPolicy: Always
